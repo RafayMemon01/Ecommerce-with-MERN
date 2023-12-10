@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Kalnia:wght@300;400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+/* font-family: 'Inter', sans-serif; for normal
+font-family: 'Kalnia', serif;  for heading */
+
+
+/* navbar style */
+
+.navbar{
+    font-family:'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 26px;
+    text-transform: uppercase;
+    box-shadow: 0 7px 4px -4px gray;
+    border-bottom: .5px solid gray !important;
+
+}
+.nav-link{
+    font-weight: normal !important;
+}
+.active{
+    border-bottom: 1px solid black !important;
+}
+
+
