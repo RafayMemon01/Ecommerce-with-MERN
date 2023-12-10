@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.mjs",
   "scripts": {
-    "start": "nodemon server.mjs"
+    "start": "node server.mjs",
+    "server": "nodemon server.mjs"
   },
   "keywords": [],
   "author": "Rafay Memon",
