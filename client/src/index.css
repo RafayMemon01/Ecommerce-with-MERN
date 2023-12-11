@@ -25,4 +25,72 @@ font-family: 'Kalnia', serif;  for heading */
     border-bottom: 1px solid black !important;
 }
 
+.navbar-brand{
+    font-weight: 700;
+    /* padding: 1em; */
+    display: flex;
+    gap: .5em;
+    font-size: larger;
+}
+
+
+/* =====FOOTER STYLING ====== */
+
+/* Add this to your global styles or import it into the component if you're using CSS-in-JS */
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .social-links {
+    margin-top: 10px;
+  }
+  
+  .social-links a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  
+  .footer-nav {
+    margin-top: 20px;
+  }
+  
+  .footer-nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  .footer-nav a:hover {
+    color: #fff8f8;
+    border-bottom: 2px solid #fff;
+  }
+
+
+
+  /* ======Page Not Found Styling ====== */
+  /* Add this to your global styles or import it into the component if you're using CSS-in-JS */
+
+.not-found-container {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .not-found-icon {
+    margin-top: 20px;
+    font-size: 50px;
+    color: #f00; /* or any color that fits your design */
+  }
+  
+  
 
