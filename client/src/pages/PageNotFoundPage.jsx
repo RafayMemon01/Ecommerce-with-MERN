@@ -3,7 +3,7 @@
 import React from "react";
 import Layout from "../components/layout/layout";
 import { NavLink } from "react-router-dom";
-import { FaExclamationTriangle } from "react-icons/fa";
+import { FaExclamationTriangle, FaHome } from "react-icons/fa";
 
 const PageNotFoundPage = () => {
   return (
@@ -13,7 +13,7 @@ const PageNotFoundPage = () => {
         <h1>Page Not Found</h1>
         <p>This page does not exist</p>
         <p>
-          Please go back to the <NavLink to="/">Homepage</NavLink>
+          Go back to the <br /><NavLink to="/">Home <FaHome /></NavLink>
         </p>
       </div>
     </Layout>
