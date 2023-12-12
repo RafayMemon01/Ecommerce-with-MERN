@@ -5,7 +5,10 @@
   "main": "server.mjs",
   "scripts": {
     "start": "node server.mjs",
-    "server": "nodemon server.mjs"
+    "server": "nodemon server.mjs",
+    "client": "npm start --prefix ./client",
+    "dev": "concurrently \"command1 arg\" \"command2 arg\""
+
   },
   "keywords": [],
   "author": "Rafay Memon",
@@ -13,6 +16,8 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "colors": "^1.4.0",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",

@@ -128,5 +128,41 @@ font-family: 'Kalnia', serif;  for heading */
     border: 0;
     margin-top: 20px;
   }
+
+
+  /* =======ABOUT PAGE====== */
+
+  .about-container {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .team-section,
+  .mission-section {
+    margin-top: 30px;
+  }
+  
+  .team-member {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .team-member-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+
+
+
+
+  /* ===========Register========= */
+  .signUpForm{
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+    align-items: center;
+  }
   
 

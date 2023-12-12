@@ -4,7 +4,7 @@ import { FaEnvelope, FaMapMarker, FaPhone } from 'react-icons/fa';
 
 const ContactPage = () => {
   return (
-    <Layout>
+    <Layout title={"Contact || E COMMERCE"} description={"This is MERN Project Just for practice by Rafay Memon"} author={"Rafay Memon"}>
       <div className="contact-container">
         <h1>Contact Us</h1>
         <p>
