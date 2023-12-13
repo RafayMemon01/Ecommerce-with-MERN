@@ -1,0 +1,14 @@
+ /* ===========Register========= */
+ .registrationForm {
+   display: flex !important;
+   justify-content: center !important;
+   width: 100px;
+   background-color: red;
+   
+  } 
+  .registrationForm .form-control{
+    max-width: 20px !important;
+  }
+  
+
+  

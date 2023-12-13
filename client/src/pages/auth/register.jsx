@@ -4,6 +4,7 @@ import Layout from "../../components/layout/layout";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+// import '../../styles/authStyle.css'
 // import 'dotenv'
 
 const Register = () => {
@@ -32,7 +33,7 @@ const Register = () => {
           navigate("/login");
         }, 2000);
       } else {
-        toast.error("res.data.message");
+        toast.error(res.data.message);
       }
     } catch (error) {
       console.log(error);
@@ -54,6 +55,7 @@ const Register = () => {
                 type="text"
                 className="form-control"
                 placeholder="Your Name"
+
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required

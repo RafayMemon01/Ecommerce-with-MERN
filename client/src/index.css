@@ -157,23 +157,6 @@ font-family: 'Kalnia', serif;  for heading */
 
 
 
-  /* ===========Register========= */
-  .signUpForm{
-    display: flex;
-    justify-content: space-between;
-    height: 70vh;
-    align-items: center;
-    /* width: fit-content; */
-    /* margin-left: 2em; */
-    box-shadow: 0 7px 4px -4px black;
-    padding: 10px;
-  }
-  .signUpForm input{
-    display: flex;
-    width: 30rem;
-    align-self: center;
-    justify-self: center;
-
-  }
+ 
   
 

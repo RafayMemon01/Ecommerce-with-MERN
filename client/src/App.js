@@ -7,6 +7,9 @@ import PageNotFoundPage from "./pages/PageNotFoundPage";
 import PolicyPage from "./pages/PolicyPage";
 import Register from "./pages/auth/register";
 import Login from "./pages/auth/login";
+
+import './styles/authStyle.css'
+
 function App() {
   return (
     <>
