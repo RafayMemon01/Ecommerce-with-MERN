@@ -9,6 +9,7 @@ import Register from "./pages/auth/register";
 import Login from "./pages/auth/login";
 
 import './styles/authStyle.css'
+import Dashboard from "./pages/user/Dashboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />}   />
         <Route path="/policy" element={<PolicyPage />}   />
         <Route path="/register" element={<Register />}   />
+        <Route path="/dashboard" element={<Dashboard />}   />
         <Route path="/login" element={<Login />}   />
         <Route path="*" element={<PageNotFoundPage />}   />
       </Routes>

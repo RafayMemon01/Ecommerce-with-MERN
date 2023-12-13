@@ -1,9 +1,22 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { FaShoppingBasket } from "react-icons/fa";
-
+import { useAuth } from '../../context/auth';
+import { toast } from "react-toastify";
 
 const Header = () => {
+  
+  const [auth,setAuth] = useAuth()
+  const handleLogout = () =>{
+    setAuth({
+      ...auth,
+      user:null,
+      token:null
+    })
+    localStorage.removeItem('auth')
+    
+    toast.success("Logout Successfully")
+  }
   return (
     <>
 <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -23,15 +36,20 @@ const Header = () => {
         <li className="nav-item">
           <NavLink to={'/about'} className="nav-link">About</NavLink>
         </li>
-        <li className="nav-item">
+      {!auth.user?(<><li className="nav-item">
           <NavLink to={'/register'} className="nav-link">Register</NavLink>
         </li>
         <li className="nav-item">
           <NavLink to={'/login'} className="nav-link">Login</NavLink>
-        </li>
+        </li></>):(<>
+        
         <li className="nav-item">
           <NavLink to={'/cart'} className="nav-link" >Cart (0)</NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink onClick={handleLogout} to={'/login'} className="nav-link">Logout</NavLink>
+        </li>
+        </>)}
       </ul>
       {/* <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

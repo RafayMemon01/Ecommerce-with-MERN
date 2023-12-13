@@ -10,14 +10,13 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
- const [auth, setAuth] = useAuth();
+  const [auth, setAuth] = useAuth();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email,password);
+    console.log(email, password);
     // toast.success('yeah')
     try {
       const res = await axios.post("http://localhost:5000/api/v1/auth/login", {
-        
         email,
         password,
       });
@@ -27,7 +26,9 @@ const Login = () => {
           ...auth,
           user: res.data.user,
           token: res.data.token,
-        })
+        });
+
+        localStorage.setItem("auth", JSON.stringify(res.data));
         setTimeout(() => {
           navigate("/");
         }, 2000);
@@ -49,8 +50,6 @@ const Login = () => {
         <div className="container mt-5">
           <h1 className="text-center">Login Form</h1>
           <form onSubmit={handleSubmit} id="registrationForm" className="mt-3">
-            
-
             <div className="mb-3">
               <input
                 type="email"
@@ -61,10 +60,6 @@ const Login = () => {
                 required
               />
             </div>
-
-            
-
-            
 
             <div className="mb-3">
               <input
@@ -78,14 +73,13 @@ const Login = () => {
             </div>
 
             <button type="submit" className="btn btn-primary">
-Login            </button>
+              Login{" "}
+            </button>
           </form>
         </div>
-        
       </div>
     </Layout>
+  );
+};
 
-  )
-}
-
-export default Login
+export default Login;
