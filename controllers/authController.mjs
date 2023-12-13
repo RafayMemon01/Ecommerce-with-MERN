@@ -9,7 +9,7 @@ export const registerController = async (req, res) => {
 
     //check required Parameters
     if (!name || !email || !password || !address || !phone) {
-      return res.status(400).json({ error: "Please fill all the fields" });
+      return res.status(400).json({ message: "Please fill all the fields" });
     }
     //check existing user
     const existingUser = await userModel.findOne({ email });

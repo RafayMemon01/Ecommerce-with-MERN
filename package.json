@@ -1,5 +1,6 @@
 {
   "name": "e_commerce_with_mern",
+  "proxy": "http://localhost:5000",
   "version": "1.0.0",
   "description": "",
   "main": "server.mjs",
@@ -7,7 +8,7 @@
     "start": "node server.mjs",
     "server": "nodemon server.mjs",
     "client": "npm start --prefix ./client",
-    "dev": "concurrently \"command1 arg\" \"command2 arg\""
+    "dev": "concurrently \"npm run server\" \"npm run client\""
 
   },
   "keywords": [],
