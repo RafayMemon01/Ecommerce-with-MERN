@@ -16,5 +16,16 @@ router.post('/login', loginController)
 router.get('/test', requireSignIn,isAdmin, testController )
 
 
+// secure routing auth
+
+router.get("/user-auth", requireSignIn, (req, res)=>{
+    res.status(200).send({
+        "Ok":true,
+    })
+})
+
+
+
+
 export default router;
 
