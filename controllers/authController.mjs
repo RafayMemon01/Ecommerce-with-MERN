@@ -117,3 +117,41 @@ export const testController = (req, res) => {
   }
 
 }
+
+
+
+
+// FORGET PASSWORD CONTROLLER
+
+export const forgetPasswordController = async (req, res) =>{
+  try {
+      const {email, question, newPassword} = req.body;
+
+      if(!email){
+        return res.status(400).send({message:"Email is required"})};
+      if(!question){
+        return res.status(400).send({message:"Question is required"});
+      }
+      if(!newPassword){
+        return res.status(400).send({message:"New Password is required"})};
+    //check user and question 
+    const user = await userModel.findOne({email, question});
+    if(!user){
+      return res.status(404).send({message:"User not found"});
+    }
+    const hashed = await hashPassword(newPassword);
+    await userModel.findByIdAndUpdate(user._id, {password: hashed});
+    res.status(200).send({success:true, message:"Password reset successfully"});
+
+
+
+ 
+
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({success:false, message:"Error while resetting password", error});    
+  }
+
+
+      }

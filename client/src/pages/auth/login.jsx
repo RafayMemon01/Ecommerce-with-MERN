@@ -3,13 +3,14 @@ import { useState } from "react";
 import Layout from "../../components/layout/layout";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
   const [auth, setAuth] = useAuth();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +31,7 @@ const Login = () => {
 
         localStorage.setItem("auth", JSON.stringify(res.data));
         setTimeout(() => {
-          navigate("/");
+          navigate( location.state ||"/");
         }, 2000);
       } else {
         toast.error(res.data.message);
