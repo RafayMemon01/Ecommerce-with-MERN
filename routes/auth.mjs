@@ -27,6 +27,11 @@ router.get("/user-auth", requireSignIn, (req, res)=>{
         "ok":true,
     })
 })
+router.get("/admin-check", requireSignIn, isAdmin, (req, res)=>{
+    res.status(200).send({
+        "ok":true,
+    })
+})
 
 
 

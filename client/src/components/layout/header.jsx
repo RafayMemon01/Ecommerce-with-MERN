@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { FaShoppingBasket } from "react-icons/fa";
 import { useAuth } from '../../context/auth';
 import { toast } from "react-toastify";
-import Dashboard from '../../pages/user/Dashboard';
+// import Dashboard from '../../pages/user/Dashboard';
 
 const Header = () => {
   
@@ -51,7 +51,7 @@ const Header = () => {
       {auth?.user?.name}
     </Link>
     <ul className="dropdown-menu">
-      <li><NavLink to={'Dashboard'} className="dropdown-item" >Dashboard</NavLink></li>
+      <li><NavLink to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}`} className="dropdown-item" >Dashboard</NavLink></li>
         <li className="nav-item">
           <NavLink onClick={handleLogout} to={'/login'} className="dropdown-item">Logout</NavLink>
         </li>
