@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { FaShoppingBasket } from "react-icons/fa";
 import { useAuth } from '../../context/auth';
 import { toast } from "react-toastify";
+import Dashboard from '../../pages/user/Dashboard';
 
 const Header = () => {
   
@@ -41,15 +42,33 @@ const Header = () => {
         </li>
         <li className="nav-item">
           <NavLink to={'/login'} className="nav-link">Login</NavLink>
-        </li></>):(<>
+        </li></>):
+        (<>
         
+        {/* <div> */}
+  <li className="nav-item dropdown">
+    <Link className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      {auth?.user?.name}
+    </Link>
+    <ul className="dropdown-menu">
+      <li><NavLink to={'Dashboard'} className="dropdown-item" >Dashboard</NavLink></li>
         <li className="nav-item">
-          <NavLink to={'/cart'} className="nav-link" >Cart (0)</NavLink>
+          <NavLink onClick={handleLogout} to={'/login'} className="dropdown-item">Logout</NavLink>
         </li>
-        <li className="nav-item">
-          <NavLink onClick={handleLogout} to={'/login'} className="nav-link">Logout</NavLink>
-        </li>
-        </>)}
+     
+    </ul>
+  </li>
+  <li className="nav-item">
+    <NavLink to="{'/cart'}" className="nav-link">Cart (0)</NavLink>
+  </li>
+
+
+{/* </div> */}
+
+
+
+        </>
+        )}
       </ul>
       {/* <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
