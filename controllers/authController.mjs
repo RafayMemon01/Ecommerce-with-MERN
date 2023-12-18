@@ -5,10 +5,10 @@ import JWT from "jsonwebtoken";
 // register api
 export const registerController = async (req, res) => {
   try {
-    const { name, email, password, address, phone } = req.body;
+    const { name, email, password, address, phone, answer } = req.body;
 
     //check required Parameters
-    if (!name || !email || !password || !address || !phone) {
+    if (!name || !email || !password || !address || !phone || !answer) {
       return res.status(400).json({ message: "Please fill all the fields" });
     }
     //check existing user
@@ -28,6 +28,7 @@ export const registerController = async (req, res) => {
       address,
       phone,
       password: hashedPassword,
+      answer,
     }).save();
 
     res.status(201).send({
@@ -125,17 +126,17 @@ export const testController = (req, res) => {
 
 export const forgetPasswordController = async (req, res) =>{
   try {
-      const {email, question, newPassword} = req.body;
+      const {email, answer, newPassword} = req.body;
 
       if(!email){
         return res.status(400).send({message:"Email is required"})};
-      if(!question){
-        return res.status(400).send({message:"Question is required"});
+      if(!answer){
+        return res.status(400).send({message:"answer is required"});
       }
       if(!newPassword){
         return res.status(400).send({message:"New Password is required"})};
-    //check user and question 
-    const user = await userModel.findOne({email, question});
+    //check user and answer 
+    const user = await userModel.findOne({email, answer});
     if(!user){
       return res.status(404).send({message:"User not found"});
     }

@@ -11,6 +11,7 @@ import Login from "./pages/auth/login";
 import './styles/authStyle.css'
 import Dashboard from "./pages/user/Dashboard";
 import PrivateRoute from "./components/Route/privateRoute";
+import ForgetPassword from "./pages/auth/forgetPassword";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/policy" element={<PolicyPage />}   />
         <Route path="/register" element={<Register />}   />
         <Route path="/login" element={<Login />}   />
+        <Route path="/forget-password" element={<ForgetPassword />}   />
         <Route path="*" element={<PageNotFoundPage />}   />
 
       </Routes>

@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <Layout title={"Best Sales"} description={"This is MERN Project Just for practice by Rafay Memon"} author={"Rafay Memon"}>
       <h1>Home Page</h1>
-      <h4>{JSON.stringify(auth)}</h4>
+      <pre className="bg-light p-3 rounded">{JSON.stringify(auth)}</pre>
     </Layout>
       
     
