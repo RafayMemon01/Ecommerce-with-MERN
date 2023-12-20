@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 
-const Loader = () => {
-    const [count,setCount]=useState(5)
+const Loader = ({path="login"}) => {
+    const [count,setCount]=useState(3)
     const navigate = useNavigate()
     const location=useLocation()
 
@@ -10,13 +10,13 @@ const Loader = () => {
         const interval=setInterval(()=>{
             setCount((prev)=>prev-1)
         },1000)
-        count===0 && navigate("/login", {
+        count===0 && navigate(`/${path}`, {
             state: location.pathname,
         })
         return ()=>clearInterval(interval)
 // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    },[count,navigate])
+    },[count,navigate, path])
   return (
     <>
       <div className="d-flex flex-column justify-content-center align-items-center"

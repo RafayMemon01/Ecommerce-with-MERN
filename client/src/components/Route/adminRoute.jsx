@@ -31,5 +31,5 @@ export default function AdminRoute() {
 
     }, [auth?.token]);
 
-    return ok ? <Outlet /> : <Loader />;
+    return ok ? <Outlet /> : <Loader path='' />;
 }
