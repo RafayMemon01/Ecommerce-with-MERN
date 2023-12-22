@@ -9,7 +9,6 @@
     "server": "nodemon server.mjs",
     "client": "npm start --prefix ./client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
-
   },
   "keywords": [],
   "author": "Rafay Memon",
@@ -24,6 +23,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
     "morgan": "^1.10.0",
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "slugify": "^1.6.6"
   }
 }
