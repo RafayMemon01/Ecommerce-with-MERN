@@ -21,7 +21,7 @@ const Register = () => {
     console.log(name, email, phone, address, password);
     // toast.success('yeah')
     try {
-      const res = await axios.post("http://localhost:5000/api/v1/auth/register", {
+      const res = await axios.post("/api/v1/auth/register", {
         name,
         email,
         phone,

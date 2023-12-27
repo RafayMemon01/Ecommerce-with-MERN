@@ -15,7 +15,7 @@ const ForgetPassword = () => {
     e.preventDefault();
     // toast.success('yeah')
     try {
-      const res = await axios.post("http://localhost:5000/api/v1/auth/forget-password", {
+      const res = await axios.post("/api/v1/auth/forget-password", {
         email,
         answer,
         newPassword,
