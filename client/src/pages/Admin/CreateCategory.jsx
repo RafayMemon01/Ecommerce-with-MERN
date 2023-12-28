@@ -7,7 +7,24 @@ import CategoryForm from "../../components/form/CategoryForm";
 
 const CreateCategory = () => {
   const [category, setCategory] = useState([]);
+  const [name, setName] =useState("")
 
+  const handleSubmit = async (e) => {   
+    e.preventDefault()
+    try {
+      const {data} = await axios.post("/api/v1/category/create-category", {name});
+      if (data.success) {
+        toast.success(data.message);
+        
+      }else{
+        toast.error(data.message);
+      }
+
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  }
   // get all category
   const getAllCategory = async () => {
     try {
@@ -38,7 +55,7 @@ const CreateCategory = () => {
             <div className="card w-75 p-3 mt-4">
               <h1>Manage Category</h1>
               <div className="p-3">
-                <CategoryForm />
+                <CategoryForm handleSubmit={handleSubmit} value={name} setValue={setName}  />
               </div>
               <table className="table">
                 <thead>
