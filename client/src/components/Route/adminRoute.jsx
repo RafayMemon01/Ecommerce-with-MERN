@@ -6,21 +6,21 @@ import Loader from '../../Loader';
 
 export default function AdminRoute() {
     const [ok, setOk] = useState(false);
-    const [auth, setAuth] = useAuth();
+    const [auth] = useAuth();
 
     useEffect(() => {
         const authCheck = async () => {
             try {
+                const token = auth?.token;
                 const res = await axios.get('/api/v1/auth/admin-check', {
                     headers: {
-                        Authorization: auth?.token,
+                        Authorization: token,
                     },
                 });
 
-                setOk(res.data.ok); // Simplified setting of ok state
+                setOk(res.data.ok);
 
             } catch (error) {
-                // Handle error, e.g., set an error state
                 console.error('Error checking authentication:', error);
             }
         };

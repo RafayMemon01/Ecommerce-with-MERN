@@ -4,21 +4,29 @@ import AdminMenu from "../../components/layout/AdminMenu";
 import { toast } from "react-toastify";
 import axios from "axios";
 import CategoryForm from "../../components/form/CategoryForm";
+import { useAuth } from "../../context/auth";
+import { useConfig } from "../../context/auth";
 
 const CreateCategory = () => {
   const [category, setCategory] = useState([]);
   const [name, setName] =useState("")
-
+  const [updateCount, setUpdateCount] = useState(0);
+  const config = useConfig()
+  
   const handleSubmit = async (e) => {   
     e.preventDefault()
+    console.log(name)
     try {
-      const {data} = await axios.post("/api/v1/category/create-category", {name});
-      if (data.success) {
-        toast.success(data.message);
-        
+      const {data} = await axios.post("/api/v1/category/create-category", { name }, config)
+      if(data.success){
+        toast.success(data.message)
+        setUpdateCount(updateCount + 1)
+        setName("")
       }else{
-        toast.error(data.message);
+        toast.error(data.message)
       }
+      
+      
 
     } catch (error) {
       console.log(error);
@@ -29,7 +37,7 @@ const CreateCategory = () => {
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get("/api/v1/category/get-category");
-      if (data.success) {
+      if (data.success && data.category) {
         setCategory(data.category);
       }
     } catch (error) {
@@ -40,9 +48,7 @@ const CreateCategory = () => {
 
   useEffect(() => {
     getAllCategory();
-    console.log(category)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [updateCount]);
 
   return (
     <Layout title={"Dashboard - Create Category"}>
@@ -84,17 +90,7 @@ const CreateCategory = () => {
                       </>
                     );
                   })}
-                  {/* {category?.map((c, index) => (
-                    <tr key={index}>
-                      <td>{c.name}</td>
-                      <td>
-                        <div>
-                        <button className="btn btn-danger ">Delete</button>
-                        <button className="btn btn-primary mx-2">Edit</button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))} */}
+                  
                 </tbody>
               </table>
             </div>

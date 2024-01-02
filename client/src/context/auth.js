@@ -1,32 +1,40 @@
-import {  useContext, useState, createContext, useEffect } from 'react'
+import { useContext, useState, createContext, useEffect } from "react";
 
-
-const authContext = createContext()
-
+const authContext = createContext();
 
 const AuthProvider = ({ children }) => {
-    const [auth, setAuth] = useState({
-        user: null,
-        token: "",
-    })
-useEffect(()=>{
-    const data = localStorage.getItem('auth')
+ const [auth, setAuth] = useState({
+    user: null,
+    token: "",
+ });
+ useEffect(() => {
+    const data = localStorage.getItem("auth");
     if (data) {
-        const parseData =JSON.parse(data)
-        setAuth({
-            ...auth,
-            user: parseData.user,
-            token: parseData.token
-        })
+      const parseData = JSON.parse(data);
+      setAuth((prevAuth) => ({
+        ...prevAuth,
+        user: parseData.user,
+        token: parseData.token,
+      }));
     }
+ }, []);
+ return (
+    <authContext.Provider value={[auth, setAuth]}>
+      {children}
+    </authContext.Provider>
+ );
+};
 
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-},[])
-    return (
-        <authContext.Provider value={[auth, setAuth]}>{children}</authContext.Provider>
-    )
-}
+const useAuth = () => useContext(authContext);
 
-const useAuth =()=> useContext(authContext)
+const useConfig = () => {
+  const [auth] = useAuth();
+  const token = auth?.token;
+  return {
+    headers: {
+      Authorization: `${token}`,
+    },
+  };
+};
 
-export { useAuth, AuthProvider }
+export { useAuth, AuthProvider, useConfig };
