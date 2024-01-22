@@ -45,7 +45,7 @@ const CreateCategory = () => {
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get("/api/v1/category/get-category");
-      if (data.success && data.category) {
+      if (data?.success && data.category) {
         setCategory(data.category);
       }
     } catch (error) {
@@ -53,6 +53,7 @@ const CreateCategory = () => {
       toast.error("Something went wrong");
     }
   };
+
 
   useEffect(() => {
     getAllCategory();
@@ -80,6 +81,24 @@ const CreateCategory = () => {
       toast.error("Error While Update Category");
     }
   };
+  //delete category
+  const handleDelete = async (id) => {
+    try {
+      const { data } = await axios.delete(
+        `/api/v1/category/delete-category/${id}`,
+        config
+      );
+      if (data.success) {
+        toast.success(`Category is Deleted`);
+        setUpdateCount(updateCount + 1);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Error While Delete Category");
+    }
+  }
   return (
     <Layout title={"Dashboard - Create Category"}>
       <div className="container-fluid p-3">
@@ -89,7 +108,7 @@ const CreateCategory = () => {
           </div>
           <div className="col-md-9">
             <div className="card w-75 p-3 mt-4">
-              <h1>Manage Category</h1>
+              <h4>Manage Category</h4>
               <div className="p-3">
                 <CategoryForm
                   handleSubmit={handleSubmit}
@@ -113,22 +132,8 @@ const CreateCategory = () => {
                           <td>
                             <div>
                               <button className="btn btn-danger"
-                              onClick={async () => {
-                                try {
-                                  const { data } = await axios.delete(
-                                    `/api/v1/category/delete-category/${c._id}`,
-                                    config
-                                  );
-                                  if (data.success) {
-                                    toast.success(`${c.name} is Deleted`);
-                                    setUpdateCount(updateCount + 1);
-                                  } else {
-                                    toast.error(data.message);
-                                  }
-                                } catch (error) {
-                                  console.log(error);
-                                  toast.error("Error While Deleting Category");
-                                }
+                              onClick={() => {
+                                handleDelete(c._id)
                               }}
                               >
                                 Delete
