@@ -67,6 +67,40 @@ useEffect(() => {
 
   console.log(categories);
 
+  //create product
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const productData = new FormData();
+      productData.append("name", name);
+      productData.append("description", description);
+      productData.append("price", price);
+      productData.append("quantity", quantity);
+      productData.append("photo", photo);
+      productData.append("category", category);
+      const { data } = await axios.put(`/api/v1/product/update-product/${id}`, productData, config)
+      if (data.success) {
+        toast.success(`${name} is Created`);
+        setName("");
+        setDescription("");
+        setPrice("");
+        setQuantity("");
+        setShipping("");
+        setCategory("");
+        setPhoto("");
+        
+        setTimeout(() => {
+        navigate("/dashboard/admin/products");
+      }, 3000);
+      }else(
+        toast.error("Error in Creating Product")
+    )
+
+    } catch (error) {
+      console.log(error)
+      toast.error("Error in Creating Product");
+    }
+  }
   return (
     <Layout title={"Dashboard - Create Product"}>
       <div className="container-fluid  p-3">
@@ -172,7 +206,7 @@ useEffect(() => {
                   </Select>
                 </div>
                 <div className="mb-3 ">
-                  <button className="btn btn-primary">Update</button>
+                  <button onClick={handleUpdate} className="btn btn-primary">Update</button>
                 </div>
               </div>
             </div>
