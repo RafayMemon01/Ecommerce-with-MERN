@@ -101,6 +101,33 @@ useEffect(() => {
       toast.error("Error in Creating Product");
     }
   }
+
+
+
+  //delte a product
+  const handleDelete = async () => {
+    try {
+      const answer = window.confirm("Are you sure you want to delete?");
+      if (!answer) return;
+      const { data } = await axios.delete(`/api/v1/product/delete-product/${id}`, config);
+      if (data.success) {
+        toast.success(`${name} is deleted`);
+        setName("");
+        setDescription("");
+        setPrice("");
+        setQuantity("");
+        setShipping("");
+        setCategory("");
+        setPhoto("");
+        setTimeout(() => {
+          navigate("/dashboard/admin/products");
+        }, 3000);
+      }
+    } catch (error) {
+      console.log(error)
+      toast.error("Error in Deleting Product");
+    }
+  }
   return (
     <Layout title={"Dashboard - Create Product"}>
       <div className="container-fluid  p-3">
@@ -207,6 +234,7 @@ useEffect(() => {
                 </div>
                 <div className="mb-3 ">
                   <button onClick={handleUpdate} className="btn btn-primary">Update</button>
+                  <button onClick={handleDelete} className="btn btn-danger">Delete</button>
                 </div>
               </div>
             </div>
